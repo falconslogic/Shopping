@@ -1,6 +1,6 @@
 package engine;
-/* Customer Shopping 
- *	By Blake Baker
+/*  Customer Shopping 
+ *	 By Blake Baker
  */
 public class Customer {
 	
@@ -43,5 +43,5 @@ public class Customer {
 	public String toString() {
 		return firstName + " " + lastName + " " + address + " " + cart;
 	}
-	//returns all variables used in class
+	//returns all variables used in class 
 }
