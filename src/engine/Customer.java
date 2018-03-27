@@ -1,12 +1,14 @@
 package engine;
-
+/* Customer Shopping 
+ *	By Blake Baker
+ */
 public class Customer {
 	
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String cart;
-	
+	//all the private instance variables 
 
 	public Customer(String firstName, String lastName, String address, String cart) {
 		this.firstName = firstName;
@@ -41,4 +43,5 @@ public class Customer {
 	public String toString() {
 		return firstName + " " + lastName + " " + address + " " + cart;
 	}
+	//returns all variables used in class
 }
