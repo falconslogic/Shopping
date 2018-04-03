@@ -1,59 +1,84 @@
 package engine;
-import java.util.Scanner;
+import java.util.*;
+
 /* Customer Shopping 
  *	By Blake Baker
+ *   A work of art
  */
 public class shoping {
 
 	public static void main(String[] args) {
-	
-		Customer customer = new Customer("Blake", "Baker", "123 leftover ln", "Empty");
-		//Uses the Customer class to create a customer
-		Item sodiePop = new Item("Sprite", "liquid candy", 1);
-		Item grain = new Item("Rice", "Minature beans", 3);
-		Item water = new Item("Aquafino", "Manly water", .5);
 		
-		//Uses the Item class to create an Item
-		sodiePop.setItemName("Coke"); 
-		sodiePop.setItemDescription("Highly liquid candy");
-		sodiePop.setItemPrice(1.5);
-			
-			int question;
+		//Scanner scanner = new Scanner(System.in);
+		//int question;
+		//question = scanner.nextInt();
+		//Initializes the scanner and question
 		
-			Scanner scan = new Scanner(System.in);
+		
+		Customer customer = new Customer("Blake", "Baker", "radway");
+		
+		Item sodiePop = new Item("Sprite", "liquid candy", 1.00);
+		Item grain = new Item("Rice", "Minature beans", 3.50);
+		Item water = new Item("Aquafino", "Manly water", .59);
+		
+		int question = 0;
+		Scanner scan = new Scanner(System.in);
+		int leave = 0;
+		// sets up the 2 ints used throughout the while loop and switch statements
+		
+		while(leave != 9) {
 			
 			
-			System.out.println("Would you like to view your profile? \n Please type 1 to view your profile.");
-				//Allows customer to view their profile
-				question = scan.nextInt();
-					
-					if (question != (1)){
-						System.out.println("OK. Thank you\n");
+			System.out.println("To see profile, press 1");
+			System.out.println("To see cart, press 2");
+			System.out.println("To see total, press 3");
+			System.out.println("To remove item, press 4");
+			System.out.println("To add item, press 5");
+			System.out.println("To flush cart, press 6");
+			//creates a system of questions to be answered 
+			
+			//next is the switch statement frenzy
+			//uses the question and scanner to do what is needed to the cart
+			question = scan.nextInt();
+				switch (question) {
+					case 1:System.out.println(customer);
+						break;
+					case 2:System.out.println(customer.getCart());
+						break;
+					case 3:System.out.println(customer.getCart().calculateT());
+						break;
+					case 4:{
+						System.out.println("Water press 3\n Soda press 4\n Grain press 5");
+						switch (question) {
+							case 3:customer.getCart().removeItem(water);
+								break;
+							case 4:customer.getCart().removeItem(sodiePop);
+								break;
+							case 5:customer.getCart().removeItem(grain);
+								break;
+						}
 					}
-					else {
-						System.out.println("Name: \n"  + customer.getFirstName() + " " + customer.getLastName());
-						System.out.println("Your address:" + " " + customer.getAddress() + "\n");
+						break;
+						
+					case 5:{
+						System.out.println("Water press 3\n Soda press 4\n Grain press 5");
+						switch (question) {
+							case 3:customer.getCart().addItem(water);
+								break;
+							case 4:customer.getCart().addItem(sodiePop);
+								break;
+							case 5:customer.getCart().addItem(grain);
+								break;
+						}
 					}
-					
-			System.out.println("Would you like to see what is in your cart \n Please type 1 to view your cart.");
-				//prints the customers entire shopping cart
-				question = scan.nextInt();
-			
-				if (question != (1)){
-					System.out.println("OK. Thank you");
-				}
-				else {
-					System.out.println("Your cart consist of:\n" + " " + "Item Name:" + " " + sodiePop.getItemName());
-					System.out.println(" Item Description:" + " " + sodiePop.getItemDescription());
-					System.out.println(" Item price:" + " " + sodiePop.getItemPrice());
-					//prints out the item and description
-				}
-				scan.close();
-			
-		System.out.println("\n Thank you for shopping with us!\n");	
-			
-			
-			
+						break;
+					case 6:customer.getCart().flushCart();
+						break;
+				}	
+				System.out.println("Press 9 to leave the shopping spree");
+				leave = scan.nextInt();
+		}
+		
+		scan.close();
 	}
-
 }
